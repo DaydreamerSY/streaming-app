@@ -23,12 +23,19 @@ def select_app():
 
 hostname = socket.gethostname()
 local_ip = socket.gethostbyname(hostname)
-radmin_ip = ''
+# radmin_ip = '26.158.223.89'
+ip_radmin = ''
+with open("config.txt", 'r', encoding='utf-8') as r:
+    ip_radmin = r.readline().replace("\n","")
+    x_res = r.readline().replace("\n","")
+    y_res = r.readline().replace("\n","")
+    r.close()
 # sender = ScreenShareClient(local_ip, 9999, 1920, 1080)
-sender = ScreenShareClient(local_ip, 9999, 1600, 900)
+sender = ScreenShareClient(ip_radmin, 9999, x_res, y_res)
 # app, name = select_app()
 # sender = AppShareClient(local_ip, 9999, name,1600, 900)
 # sender = AppShareClient(local_ip, 9999, name)
+
 
 
 t = threading.Thread(target=sender.start_stream)
