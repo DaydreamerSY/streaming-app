@@ -27,8 +27,9 @@ local_ip = socket.gethostbyname(hostname)
 ip_radmin = ''
 with open("config.txt", 'r', encoding='utf-8') as r:
     ip_radmin = r.readline().replace("\n","")
-    x_res = r.readline().replace("\n","")
-    y_res = r.readline().replace("\n","")
+    print(ip_radmin)
+    x_res = int(r.readline().replace("\n",""))
+    y_res = int(r.readline().replace("\n",""))
     r.close()
 # sender = ScreenShareClient(local_ip, 9999, 1920, 1080)
 sender = ScreenShareClient(ip_radmin, 9999, x_res, y_res)
